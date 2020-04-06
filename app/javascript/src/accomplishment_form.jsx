@@ -4,14 +4,10 @@ import { likingEmoji } from './emojis'
 import './accomplishment_form.scss'
 import { accomplishTask } from './api'
 
-function AccomplishmentForm({ accessKey, taskId, accomplished }) {
-  const [formOpen, setFormOpen] = useState(false)
+function AccomplishmentForm({ accessKey, taskId, accomplished, accomplishment }) {
   const [error, setError] = useState(undefined)
-  const [liking, setLiking] = useState(undefined)
-  const [comment, setComment] = useState('')
-  if (!formOpen) {
-    return <div className="button button--primary" onClick={() => setFormOpen(true)}>Olen suorittanut haasteen...</div>
-  }
+  const [liking, setLiking] = useState(accomplishment ? accomplishment.liking : undefined)
+  const [comment, setComment] = useState(accomplishment ? accomplishment.comment : '')
 
   const likingClasses = l => {
     if (l === liking) return 'accomplishment-form__liking accomplishment-form__liking--selected'

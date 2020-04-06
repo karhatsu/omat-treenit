@@ -28,7 +28,12 @@ function PlayerPage({ match }) {
 
   const taskAccomplished = accomplishment => {
     const accomplishments = [...data.accomplishments]
-    accomplishments.push(accomplishment)
+    const index = accomplishments.findIndex(a => a.taskId === accomplishment.taskId)
+    if (index !== -1) {
+      accomplishments[index] = accomplishment
+    } else {
+      accomplishments.push(accomplishment)
+    }
     setData({ ...data, accomplishments })
   }
 

@@ -3,7 +3,7 @@ import React from 'react'
 import './accomplished.scss'
 import { likingEmoji } from './emojis'
 
-function Accomplished({ accomplishment }) {
+function Accomplished({ accomplishment, onEdit }) {
   const { comment, liking } = accomplishment
   return (
     <div className="accomplished">
@@ -12,6 +12,7 @@ function Accomplished({ accomplishment }) {
         <div className="accomplished__liking">{likingEmoji(liking)}</div>
         {comment && <div className="accomplished__comment">{comment}</div>}
       </div>
+      <input type="button" className="button" value="Muuta" onClick={onEdit} />
     </div>
   )
 }
