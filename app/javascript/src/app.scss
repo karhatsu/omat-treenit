@@ -1,4 +1,27 @@
+$black: rgba(0, 0, 0, 0.8);
+$green: rgba(0, 128, 0, 0.8);
+$red: rgba(255, 0, 0, 0.9);
 $white: rgba(255, 255, 255, 0.9);
+$white-60: rgba(255, 255, 255, 0.6);
+
+$inputHeight: 16px;
+
+@mixin white-box($clickable: false, $marginTop: 8px) {
+  background-color: $white;
+  border-radius: 4px;
+  color: $black;
+  margin-top: $marginTop;
+  padding: 8px;
+  -webkit-tap-highlight-color: transparent;
+
+  @if $clickable == true {
+    cursor: pointer;
+
+    &:active {
+      background-color: $white-60;
+    }
+  }
+}
 
 body {
   background: url("../images/grass.jpg") saddlebrown repeat;
@@ -7,4 +30,51 @@ body {
   font-weight: 400;
   font-size: 14px;
   padding: 8px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form {
+  &--vertical {
+    margin: 16px 0;
+
+    .form__field, .form__buttons {
+      margin-top: 8px;
+    }
+  }
+
+  &--start {
+    text-align: center;
+    @include white-box();
+  }
+
+  &__error {
+    color: $red;
+    font-weight: 600;
+  }
+
+  &__field {
+    input {
+      height: $inputHeight;
+      padding: 8px;
+      width: 200px;
+    }
+  }
+}
+
+.button {
+  background-color: #eee;
+  border: 1px solid $black;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 8px 16px;
+  -webkit-appearance: none;
+}
+
+.button--primary {
+  border: 1px solid $green;
 }

@@ -1,0 +1,5 @@
+fi:
+  activerecord:
+    attributes:
+      player:
+        name: Pelaajan nimi
