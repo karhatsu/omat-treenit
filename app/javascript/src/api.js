@@ -1,5 +1,13 @@
 const unexpectedErrorMsg = 'Odottamaton virhe, yritä uudestaan.'
 
+export function fetchPlayer(accessKey, callback) {
+  fetch(`/api/players/${accessKey}`, {
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response => {
+    handleApiResponse(response, callback)
+  }).catch(() => handleApiConnectionError(callback))
+}
+
 export function createPlayer(playerName, callback) {
   fetch('/api/players', {
     method: 'POST',

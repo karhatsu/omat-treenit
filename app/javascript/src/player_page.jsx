@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { fetchPlayer } from './api'
 
-function PlayerPage() {
+import './player.scss'
+
+function PlayerPage({ match }) {
+  const [error, setError] = useState(undefined)
+  const [player, setPlayer] = useState(undefined)
+  useEffect(() => {
+    fetchPlayer(match.params.accessKey, (err, json) => {
+      if (err) {
+        setError(err)
+      } else {
+        setPlayer(json)
+      }
+    })
+  }, [])
+
   return (
-    <div>TODO</div>
+    <div className="player">
+      {error && <div className="form__error">{error}</div>}
+      {player && <div className="player__name">{player.name}</div>}
+    </div>
   )
 }
 

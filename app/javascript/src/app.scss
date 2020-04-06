@@ -1,27 +1,6 @@
-$black: rgba(0, 0, 0, 0.8);
-$green: rgba(0, 128, 0, 0.8);
-$red: rgba(255, 0, 0, 0.9);
-$white: rgba(255, 255, 255, 0.9);
-$white-60: rgba(255, 255, 255, 0.6);
+@import 'variables';
 
 $inputHeight: 16px;
-
-@mixin white-box($clickable: false, $marginTop: 8px) {
-  background-color: $white;
-  border-radius: 4px;
-  color: $black;
-  margin-top: $marginTop;
-  padding: 8px;
-  -webkit-tap-highlight-color: transparent;
-
-  @if $clickable == true {
-    cursor: pointer;
-
-    &:active {
-      background-color: $white-60;
-    }
-  }
-}
 
 body {
   background: url("../images/grass.jpg") saddlebrown repeat;
