@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createPlayer } from './api'
 
-function StartForm() {
+function StartForm({ history }) {
   const [name, setName] = useState('')
   const [error, setError] = useState(undefined)
   const changeName = e => {
@@ -15,7 +15,7 @@ function StartForm() {
       if (err) {
         setError(err)
       } else {
-        console.log(err, json)
+        history.push(`/players/${json.accessKey}`)
       }
     })
   }
