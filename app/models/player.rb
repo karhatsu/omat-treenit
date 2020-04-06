@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { message: 'on jo varattu. Jos olet aloittanut käytön jo aiemmin, käytä saamaasi linkkiä tai pyydä se Henriltä.' }
 
   before_create :generate_access_key
 
