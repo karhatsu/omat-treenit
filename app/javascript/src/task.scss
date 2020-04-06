@@ -3,6 +3,14 @@
 .task {
   @include white-box(false, 16px);
 
+  &--accomplished {
+    border: 4px solid $green;
+  }
+
+  &--unfinished {
+    border: 4px solid $red-light;
+  }
+
   &__title {
     font-size: 16px;
     font-weight: 600;

@@ -23,12 +23,14 @@ function PlayerPage({ match }) {
     return <div className="player">Ladataan pelaajan tietoja...</div>
   }
 
+  const findAccomplishment = task => data.accomplishments.find(a => a.taskId === task.id)
+
   return (
     <>
       <div className="player">
         <div className="player__name">{data.player.name}</div>
       </div>
-      {data.tasks.map(task => <Task key={task.id} task={task}/>)}
+      {data.tasks.map(task => <Task key={task.id} task={task} accomplishment={findAccomplishment(task)} />)}
     </>
   )
 }

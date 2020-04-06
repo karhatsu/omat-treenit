@@ -1,0 +1,24 @@
+.accomplished {
+  margin-top: 8px;
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__feedback {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  &__liking {
+    margin-right: 4px;
+  }
+
+  &__comment {
+    font-style: italic;
+  }
+}
