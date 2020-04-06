@@ -1,1 +1,1 @@
-json.(@player, :name)
+json.(@player, :access_key, :name)
