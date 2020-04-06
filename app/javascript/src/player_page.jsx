@@ -7,8 +7,9 @@ import './player.scss'
 function PlayerPage({ match }) {
   const [error, setError] = useState(undefined)
   const [data, setData] = useState(undefined)
+  const { params: { accessKey } } = match
   useEffect(() => {
-    fetchPlayer(match.params.accessKey, (err, json) => {
+    fetchPlayer(accessKey, (err, json) => {
       if (err) {
         setError(err)
       } else {
@@ -25,12 +26,28 @@ function PlayerPage({ match }) {
 
   const findAccomplishment = task => data.accomplishments.find(a => a.taskId === task.id)
 
+  const taskAccomplished = accomplishment => {
+    const accomplishments = [...data.accomplishments]
+    accomplishments.push(accomplishment)
+    setData({ ...data, accomplishments })
+  }
+
   return (
     <>
       <div className="player">
         <div className="player__name">{data.player.name}</div>
       </div>
-      {data.tasks.map(task => <Task key={task.id} task={task} accomplishment={findAccomplishment(task)} />)}
+      {data.tasks.map(task => {
+        return (
+          <Task
+            key={task.id}
+            task={task}
+            accomplishment={findAccomplishment(task)}
+            accessKey={accessKey}
+            accomplished={taskAccomplished}
+          />
+        )
+      })}
     </>
   )
 }

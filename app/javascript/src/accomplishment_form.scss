@@ -1,0 +1,36 @@
+@import "variables";
+
+.accomplishment-form {
+  &__sub-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 8px 0;
+  }
+
+  &__likings {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__liking {
+    font-size: 32px;
+    line-height: 32px;
+    margin: 0 4px;
+    padding: 4px;
+
+    &--selected {
+      border: 2px solid $green;
+      border-radius: 2px;
+      padding: 2px 4px;
+      margin: 0 2px;
+    }
+  }
+
+  &__comment {
+    textarea {
+      padding: 8px;
+      height: 128px;
+      width: 95%;
+    }
+  }
+}

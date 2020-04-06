@@ -1,21 +1,7 @@
 import React from 'react'
 
 import './accomplished.scss'
-
-const likingEmoji = liking => {
-  switch (liking) {
-    case 2:
-      return '😀'
-    case 1:
-      return '🙂'
-    case 0:
-      return '😕'
-    case -1:
-      return '😠'
-    default:
-      return ''
-  }
-}
+import { likingEmoji } from './emojis'
 
 function Accomplished({ accomplishment }) {
   const { comment, liking } = accomplishment

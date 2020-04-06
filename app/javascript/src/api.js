@@ -18,6 +18,16 @@ export function createPlayer(playerName, callback) {
   }).catch(() => handleApiConnectionError(callback))
 }
 
+export function accomplishTask(accessKey, data, callback) {
+  fetch(`/api/players/${accessKey}/accomplishment`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(response => {
+    handleApiResponse(response, callback)
+  }).catch(() => handleApiConnectionError(callback))
+}
+
 export function handleApiResponse(response, callback) {
   if (response.status === 201 || response.status === 204) {
     callback()
