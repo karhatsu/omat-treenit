@@ -12,8 +12,13 @@
     margin-top: 8px;
   }
 
-  &__youtube-url {
-    display: block;
-    margin-top: 8px;
+  iframe {
+    margin: 8px 0;
   }
 }
+
+a.youtube-link {
+  display: block;
+  margin-top: 8px;
+}
+
