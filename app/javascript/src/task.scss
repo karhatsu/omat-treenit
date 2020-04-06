@@ -1,0 +1,19 @@
+@import './variables';
+
+.task {
+  @include white-box(false, 16px);
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__description {
+    margin-top: 8px;
+  }
+
+  &__youtube-url {
+    display: block;
+    margin-top: 8px;
+  }
+}
