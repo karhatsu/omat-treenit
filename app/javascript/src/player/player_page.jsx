@@ -67,6 +67,7 @@ function PlayerPage({ match }) {
         <div className="player__stats-bar">
           <div className="player__stats-done" style={{ backgroundColor: getColor(accomplishedPercentage), width: `${100 * accomplishedPercentage}%` }} />
         </div>
+        {!data.accomplishments.length && <div className="player__intro">Aloita etsimällä tehtävä, jonka olet suorittanut ja paina "Olen suorittanut tehtävän"-nappia!</div>}
       </div>
       <div className="title-2">Linkki omalle sivulle</div>
       <div className="player">

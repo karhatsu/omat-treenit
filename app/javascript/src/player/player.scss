@@ -29,6 +29,12 @@
     height: 24px;
   }
 
+  &__intro {
+    color: $red;
+    font-weight: 600;
+    margin: 8px 0;
+  }
+
   &__url-title {
     font-weight: 600;
     margin-bottom: 4px;
