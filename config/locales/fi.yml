@@ -3,3 +3,8 @@ fi:
     attributes:
       player:
         name: Pelaajan nimi
+      task:
+        title: Otsikko
+        description: Kuvaus
+        publish_date: Julkaisupäivä
+        youtube_url: YouTube URL
