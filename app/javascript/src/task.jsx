@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { format } from 'date-fns'
 
 import './task.scss'
 import Accomplished from './accomplished'
@@ -19,7 +20,7 @@ function Task({ task, accomplishment, accessKey, accomplished }) {
 
   return (
     <div className={classNames.join(' ')}>
-      <div className="task__title">{publishDate} {title}</div>
+      <div className="task__title">{format(new Date(publishDate), 'd.M.Y')} {title}</div>
       <div className="task__description">{description}</div>
       {youtubeUrl && <YoutubeIframe url={youtubeUrl} />}
       {!formOpen && accomplishment && <Accomplished accomplishment={accomplishment} onEdit={() => setFormOpen(true)} />}
