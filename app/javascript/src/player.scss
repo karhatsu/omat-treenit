@@ -6,6 +6,7 @@
   &__stats-summary {
     font-size: 18px;
     font-weight: 600;
+    line-height: 32px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,6 +22,7 @@
     border-radius: 2px;
     height: 24px;
     width: 100%;
+    margin-top: 8px;
   }
 
   &__stats-done {
