@@ -8,6 +8,6 @@ class Player < ApplicationRecord
   private
 
   def generate_access_key
-    self.access_key = SecureRandom.hex
+    self.access_key = SecureRandom.hex[0...16]
   end
 end
