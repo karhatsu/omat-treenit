@@ -4,7 +4,7 @@ import { likingEmoji } from './emojis'
 import './accomplishment_form.scss'
 import { accomplishTask } from './api'
 
-function AccomplishmentForm({ accessKey, taskId, accomplished, accomplishment }) {
+function AccomplishmentForm({ accessKey, taskId, accomplished, onCancel, accomplishment }) {
   const [error, setError] = useState(undefined)
   const [liking, setLiking] = useState(accomplishment ? accomplishment.liking : undefined)
   const [comment, setComment] = useState(accomplishment ? accomplishment.comment : '')
@@ -46,7 +46,10 @@ function AccomplishmentForm({ accessKey, taskId, accomplished, accomplishment })
         />
       </div>
       {error && <div className="form__error">{error}</div>}
-      <input type="submit" className="button button--primary" value="Tallenna" disabled={typeof liking === 'undefined'} />
+      <div className="form__buttons">
+        <input type="submit" className="button button--primary" value="Tallenna" disabled={typeof liking === 'undefined'} />
+        <input type="button" className="button" value="Peruuta" onClick={onCancel} />
+      </div>
     </form>
   )
 }

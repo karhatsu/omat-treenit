@@ -1,3 +1,5 @@
+@import "variables";
+
 .accomplished {
   margin-top: 8px;
 
@@ -21,5 +23,10 @@
 
   &__comment {
     font-style: italic;
+  }
+
+  &__edit {
+    color: $green;
+    text-decoration: underline;
   }
 }

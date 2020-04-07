@@ -12,7 +12,7 @@ function Accomplished({ accomplishment, onEdit }) {
         <div className="accomplished__liking">{likingEmoji(liking)}</div>
         {comment && <div className="accomplished__comment">{comment}</div>}
       </div>
-      <input type="button" className="button" value="Muuta" onClick={onEdit} />
+      <div className="accomplished__edit" onClick={onEdit}>Muuta</div>
     </div>
   )
 }

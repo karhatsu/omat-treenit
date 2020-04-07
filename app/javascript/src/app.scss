@@ -58,3 +58,10 @@ body {
 .button--primary {
   border: 2px solid $green;
 }
+
+.form__buttons {
+  margin-top: 8px;
+  .button {
+    margin-right: 8px;
+  }
+}

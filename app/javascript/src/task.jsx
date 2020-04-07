@@ -29,6 +29,7 @@ function Task({ task, accomplishment, accessKey, accomplished }) {
           accessKey={accessKey}
           taskId={task.id}
           accomplished={onSave}
+          onCancel={() => setFormOpen(false)}
           accomplishment={accomplishment}
         />
       )}
