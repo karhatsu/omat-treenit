@@ -20,6 +20,25 @@
   iframe {
     margin: 8px 0;
   }
+
+  &__accomplisher {
+    line-height: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__accomplisher-emoji {
+    font-size: 24px;
+    margin-right: 6px;
+  }
+
+  &__accomplisher-comment {
+    font-style: italic;
+    line-height: 14px;
+    margin-left: 8px;
+  }
 }
 
 a.youtube-link {

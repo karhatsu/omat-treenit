@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchTasks } from './api'
+import Task from './task'
 
 function Tasks({ match }) {
   const { params: { coachKey } } = match
@@ -25,9 +26,7 @@ function Tasks({ match }) {
       return (
         <div>
           <div className="title-2">Tehtävät</div>
-          {data.tasks.map(task => {
-            return <div key={task.id}>{task.title}</div>
-          })}
+          {data.tasks.map(task => <Task key={task.id} task={task} />)}
         </div>
       )
     }
