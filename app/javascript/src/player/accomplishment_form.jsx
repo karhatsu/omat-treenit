@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { likingEmoji } from './emojis'
+import { likingEmoji } from '../emojis'
 
 import './accomplishment_form.scss'
 import { accomplishTask } from './api'

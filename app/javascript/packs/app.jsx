@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import StartForm from '../src/start_form'
-import PlayerPage from '../src/player_page'
+import StartForm from '../src/player/start_form'
+import PlayerPage from '../src/player/player_page'
 
 import '../src/app.scss'
 

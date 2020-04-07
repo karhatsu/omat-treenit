@@ -3,7 +3,7 @@ import { fetchPlayer } from './api'
 import Task from './task'
 
 import './player.scss'
-import { likingEmoji } from './emojis'
+import { likingEmoji } from '../emojis'
 
 function getColor(value){
   const hue=(value * 120).toString(10)

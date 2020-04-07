@@ -1,7 +1,7 @@
 import React from 'react'
+import { likingEmoji } from '../emojis'
 
 import './accomplished.scss'
-import { likingEmoji } from './emojis'
 
 function Accomplished({ accomplishment, onEdit }) {
   const { comment, liking } = accomplishment
