@@ -11,7 +11,9 @@ function Task({ task, accomplishment, accessKey, accomplished }) {
 
   const { publishDate, title, description, youtubeUrl } = task
   const classNames = ['task']
-  classNames.push(accomplishment ? 'task--accomplished' : 'task--unfinished')
+  if (!accomplishment) {
+    classNames.push('task--unfinished')
+  }
 
   const onSave = response => {
     setFormOpen(false)
