@@ -58,6 +58,7 @@ function PlayerPage({ match }) {
   }
   return (
     <>
+      <div className="title">FC Kontu P11 &mdash; {data.player.name}</div>
       <div className="player">
         <div className="player__stats-summary">
           Tehtäviä tehty {data.accomplishments.length} / {data.tasks.length}

@@ -21,15 +21,18 @@ function StartForm({ history }) {
   }
 
   return (
-    <form className="form form--vertical form--start" onSubmit={submit}>
-      {error && <div className="form__error">{error}</div>}
-      <div className="form__field">
-        <input type="text" placeholder="Pelaajan nimi" value={name} onChange={changeName} />
-      </div>
-      <div className="form__buttons">
-        <input type="submit" value="Jatka" className="button button--primary" disabled={!name} />
-      </div>
-    </form>
+    <div>
+      <div className="title">FC Kontu P11 &mdash; omatoiminen harjoittelu</div>
+      <form className="form form--vertical form--start" onSubmit={submit}>
+        {error && <div className="form__error">{error}</div>}
+        <div className="form__field">
+          <input type="text" placeholder="Pelaajan nimi" value={name} onChange={changeName} />
+        </div>
+        <div className="form__buttons">
+          <input type="submit" value="Jatka" className="button button--primary" disabled={!name} />
+        </div>
+      </form>
+    </div>
   )
 }
 

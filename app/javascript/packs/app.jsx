@@ -9,13 +9,10 @@ import '../src/app.scss'
 
 const Application = () => {
   return (
-    <div>
-      <div className="title">FC Kontu P11 - omatoiminen harjoittelu</div>
-      <Switch>
-        <Route path="/players/:accessKey" component={PlayerPage} />
-        <Route path="/" component={StartForm} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route path="/players/:accessKey" component={PlayerPage} />
+      <Route path="/" component={StartForm} />
+    </Switch>
   )
 }
 
