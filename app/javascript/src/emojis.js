@@ -7,7 +7,7 @@ export const likingEmoji = liking => {
     case 0:
       return '😕'
     case -1:
-      return '😠'
+      return '😔'
     default:
       return ''
   }
