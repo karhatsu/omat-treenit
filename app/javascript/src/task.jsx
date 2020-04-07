@@ -23,6 +23,7 @@ function Task({ task, accomplishment, accessKey, accomplished }) {
       <div className="task__title">{format(new Date(publishDate), 'd.M.Y')} {title}</div>
       <div className="task__description">{description}</div>
       {youtubeUrl && <YoutubeIframe url={youtubeUrl} />}
+      {!formOpen && accomplishment && <hr />}
       {!formOpen && accomplishment && <Accomplished accomplishment={accomplishment} onEdit={() => setFormOpen(true)} />}
       {!formOpen && !accomplishment && <div className="button button--primary" onClick={() => setFormOpen(true)}>Olen suorittanut haasteen...</div>}
       {formOpen && (
