@@ -3,7 +3,27 @@
 .player {
   @include white-box();
 
-  &__name {
-    font-size: 16px;
+  &__stats-summary {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__coach-emoji {
+    font-size: 32px;
+    margin-left: 8px;
+  }
+
+  &__stats-bar {
+    border: 1px solid #333;
+    border-radius: 2px;
+    height: 24px;
+    width: 100%;
+  }
+
+  &__stats-done {
+    height: 24px;
   }
 }

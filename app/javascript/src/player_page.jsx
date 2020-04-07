@@ -3,6 +3,12 @@ import { fetchPlayer } from './api'
 import Task from './task'
 
 import './player.scss'
+import { likingEmoji } from './emojis'
+
+function getColor(value){
+  const hue=(value * 120).toString(10)
+  return ["hsl(",hue,",100%,50%)"].join("")
+}
 
 function PlayerPage({ match }) {
   const [error, setError] = useState(undefined)
@@ -22,6 +28,8 @@ function PlayerPage({ match }) {
     return <div className="player"><div className="form__error">{error}</div></div>
   } else if (!data) {
     return <div className="player">Ladataan pelaajan tietoja...</div>
+  } else if (!data.tasks.length) {
+    return <div className="player">Tehtäviä ei ole vielä lisätty</div>
   }
 
   const findAccomplishment = task => data.accomplishments.find(a => a.taskId === task.id)
@@ -37,10 +45,27 @@ function PlayerPage({ match }) {
     setData({ ...data, accomplishments })
   }
 
+  const accomplishedPercentage = data.accomplishments.length / data.tasks.length
+  let coachLiking = undefined
+  if (accomplishedPercentage < 0.25) {
+    coachLiking = -1
+  } else if (accomplishedPercentage < 0.5) {
+    coachLiking = 0
+  } else if (accomplishedPercentage < 0.75) {
+    coachLiking = 1
+  } else {
+    coachLiking = 2
+  }
   return (
     <>
       <div className="player">
-        <div className="player__name">{data.player.name}</div>
+        <div className="player__stats-summary">
+          Tehtäviä tehty {data.accomplishments.length} / {data.tasks.length}
+          <div className="player__coach-emoji">{likingEmoji(coachLiking)}</div>
+        </div>
+        <div className="player__stats-bar">
+          <div className="player__stats-done" style={{ backgroundColor: getColor(accomplishedPercentage), width: `${100 * accomplishedPercentage}%` }} />
+        </div>
       </div>
       {data.tasks.map(task => {
         return (
