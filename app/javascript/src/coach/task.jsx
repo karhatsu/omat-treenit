@@ -2,7 +2,7 @@ import React from 'react'
 import { format } from "date-fns"
 import { likingEmoji } from '../emojis'
 
-function Task({ task }) {
+function Task({ task, onEdit }) {
   const { publishDate, title, description, youtubeUrl, accomplishments } = task
   return (
     <div className="task">
@@ -19,6 +19,7 @@ function Task({ task }) {
           </div>
         )
       })}
+      <div className="button" onClick={onEdit}>Muokkaa</div>
     </div>
   )
 }

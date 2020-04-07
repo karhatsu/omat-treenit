@@ -8,6 +8,7 @@ function Tasks({ match }) {
   const [error, setError] = useState(undefined)
   const [data, setData] = useState(undefined)
   const [newTaskFormOpen, setNewTaskFormOpen] = useState(false)
+  const [editTask, setEditTask] = useState(undefined)
 
   useEffect(() => {
     fetchTasks(coachKey, (err, json) => {
@@ -19,11 +20,25 @@ function Tasks({ match }) {
     })
   }, [])
 
-  const onCreate = task => {
+  const onSave = task => {
     const tasks = [...data.tasks]
-    tasks.unshift(task)
+    const index = tasks.findIndex(t => t.id === task.id)
+    if (index !== -1) {
+      tasks[index] = task
+      setEditTask(undefined)
+    } else {
+      tasks.unshift(task)
+      setNewTaskFormOpen(false)
+    }
     setData({ ...data, tasks })
-    setNewTaskFormOpen(false)
+  }
+
+  const onCancel = id => {
+    if (id) {
+      setEditTask(undefined)
+    } else {
+      setNewTaskFormOpen(false)
+    }
   }
 
   const resolveContent = () => {
@@ -35,10 +50,15 @@ function Tasks({ match }) {
       return (
         <div>
           <div className="title-2">Uusi tehtävä</div>
-          {newTaskFormOpen && <TaskForm coachKey={coachKey} onCreate={onCreate} />}
+          {newTaskFormOpen && <TaskForm coachKey={coachKey} onSave={onSave} onCancel={() => onCancel()} />}
           {!newTaskFormOpen && <div className="task"><div className="button" onClick={() => setNewTaskFormOpen(true)}>Uusi tehtävä...</div></div>}
           <div className="title-2">Tehtävät</div>
-          {data.tasks.map(task => <Task key={task.id} task={task} />)}
+          {data.tasks.map(task => {
+            if (editTask && editTask.id === task.id) {
+              return <TaskForm key={task.id} coachKey={coachKey}task={editTask} onSave={onSave} onCancel={() => onCancel(task.id)} />
+            }
+            return <Task key={task.id} task={task} onEdit={() => setEditTask(task)} />
+          })}
         </div>
       )
     }

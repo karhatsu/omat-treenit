@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { format } from 'date-fns'
-import { createTask } from './api'
+import { createTask, updateTask } from './api'
 
 const emptyTask = { publishDate: format(new Date(), 'y-MM-dd'), title: '', description: '', youtubeUrl: '' }
 
-function TaskForm({ coachKey, task, onCreate }) {
+function TaskForm({ coachKey, task, onSave, onCancel }) {
   const [errors, setErrors] = useState(undefined)
   const [data, setData] = useState(task || emptyTask)
 
@@ -12,15 +12,23 @@ function TaskForm({ coachKey, task, onCreate }) {
     setData({ ...data, [field]: e.target.value })
   }
 
+  const apiCallback = (err, json) => {
+    if (err) {
+      setErrors(err)
+    } else {
+      onSave(json)
+    }
+  }
+
   const submit = e => {
     e.preventDefault()
-    createTask(coachKey, { task: data }, (err, json) => {
-      if (err) {
-        setErrors(err)
-      } else {
-        onCreate(json)
-      }
-    })
+    if (task) {
+      const { publishDate, title, description, youtubeUrl } = data
+      const taskData = { publishDate, title, description, youtubeUrl }
+      updateTask(coachKey, task.id, { task: taskData }, apiCallback)
+    } else {
+      createTask(coachKey, { task: data }, apiCallback)
+    }
   }
 
   return (
@@ -40,7 +48,7 @@ function TaskForm({ coachKey, task, onCreate }) {
       </div>
       <div className="form__buttons">
         <input type="submit" value="Tallenna" className="button button--primary" />
-        <input type="button" value="Peruuta" />
+        <input type="button" value="Peruuta" className="button" onClick={onCancel} />
       </div>
     </form>
   )
