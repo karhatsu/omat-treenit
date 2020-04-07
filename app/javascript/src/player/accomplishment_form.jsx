@@ -6,6 +6,7 @@ import { accomplishTask } from './api'
 
 function AccomplishmentForm({ accessKey, taskId, accomplished, onCancel, accomplishment }) {
   const [error, setError] = useState(undefined)
+  const [submitting, setSubmitting] = useState(false)
   const [liking, setLiking] = useState(accomplishment ? accomplishment.liking : undefined)
   const [comment, setComment] = useState(accomplishment ? accomplishment.comment : '')
 
@@ -20,6 +21,7 @@ function AccomplishmentForm({ accessKey, taskId, accomplished, onCancel, accompl
 
   const submit = e => {
     e.preventDefault()
+    setSubmitting(true)
     accomplishTask(accessKey, { taskId, liking, comment }, (err, json) => {
       if (err) {
         setError(err)
@@ -47,7 +49,7 @@ function AccomplishmentForm({ accessKey, taskId, accomplished, onCancel, accompl
       </div>
       {error && <div className="form__error">{error}</div>}
       <div className="form__buttons">
-        <input type="submit" className="button button--primary" value="Tallenna" disabled={typeof liking === 'undefined'} />
+        <input type="submit" className="button button--primary" value="Tallenna" disabled={submitting || typeof liking === 'undefined'} />
         <input type="button" className="button" value="Peruuta" onClick={onCancel} />
       </div>
     </form>
