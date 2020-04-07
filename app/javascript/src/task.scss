@@ -1,7 +1,8 @@
 @import './variables';
 
 .task {
-  @include white-box(false, 16px);
+  @include white-box();
+  margin: 8px 0 16px;
 
   &--accomplished {
     border: 4px solid $green;

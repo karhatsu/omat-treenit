@@ -68,10 +68,12 @@ function PlayerPage({ match }) {
           <div className="player__stats-done" style={{ backgroundColor: getColor(accomplishedPercentage), width: `${100 * accomplishedPercentage}%` }} />
         </div>
       </div>
+      <div className="title-2">Linkki omalle sivulle</div>
       <div className="player">
-        <div className="player__url-title">Tällä osoitteella pääset takaisin omalle sivullesi:</div>
+        <div className="player__url-title">Tällä osoitteella pääset takaisin omalle sivullesi, ota osoite talteen:</div>
         <div>{window.location.href}</div>
       </div>
+      <div className="title-2">Tehtävät</div>
       {data.tasks.map(task => {
         return (
           <Task
