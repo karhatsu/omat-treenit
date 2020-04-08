@@ -27,7 +27,7 @@ function Task({ task, accomplishment, accessKey, accomplished }) {
       {youtubeUrl && <YoutubeIframe url={youtubeUrl} />}
       {!formOpen && accomplishment && <hr />}
       {!formOpen && accomplishment && <Accomplished accomplishment={accomplishment} onEdit={() => setFormOpen(true)} />}
-      {!formOpen && !accomplishment && <div className="button button--primary" onClick={() => setFormOpen(true)}>Olen suorittanut tehtävän...</div>}
+      {!formOpen && !accomplishment && <div className="button button--primary" onClick={() => setFormOpen(true)}>👍 Olen suorittanut tehtävän...</div>}
       {formOpen && (
         <AccomplishmentForm
           accessKey={accessKey}
