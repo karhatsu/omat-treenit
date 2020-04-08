@@ -19,7 +19,9 @@ function Task({ task, onEdit }) {
           </div>
         )
       })}
-      <div className="button" onClick={onEdit}>Muokkaa</div>
+      <div className="form__buttons">
+        <div className="button" onClick={onEdit}>Muokkaa</div>
+      </div>
     </div>
   )
 }
