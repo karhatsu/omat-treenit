@@ -20,9 +20,10 @@ function Players({ match }) {
 
   const content = () => {
     return data.players.map(player => {
+      const percentage = Math.round(100 * player.accomplishments.length / data.taskCount)
       return (
         <div key={player.id} className="task">
-          <div className="task__title">{player.name} ({player.accomplishments.length})</div>
+          <div className="task__title">{player.name} ({player.accomplishments.length} / {data.taskCount} = {percentage}%)</div>
           {player.accomplishments.map(accomplishment => {
             return (
               <div className="task__accomplisher" key={accomplishment.id}>

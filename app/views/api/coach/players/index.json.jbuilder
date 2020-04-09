@@ -5,3 +5,4 @@ json.players @players do |player|
     json.task accomplishment.task, :title
   end
 end
+json.task_count @task_count
