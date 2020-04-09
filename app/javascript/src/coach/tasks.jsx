@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { fetchTasks } from './api'
 import Task from './task'
 import TaskForm from './task_form'
+import DataPage from '../data_page'
 
 function Tasks({ match }) {
   const { params: { coachKey } } = match
@@ -41,35 +42,24 @@ function Tasks({ match }) {
     }
   }
 
-  const resolveContent = () => {
-    if (error) {
-      return <div className="task"><div className="form__error">{error}</div></div>
-    } else if (!data) {
-      return <div className="task">Ladataan tehtäviä...</div>
-    } else {
-      return (
-        <div>
-          <div className="title-2">Uusi tehtävä</div>
-          {newTaskFormOpen && <TaskForm coachKey={coachKey} onSave={onSave} onCancel={() => onCancel()} />}
-          {!newTaskFormOpen && <div className="task"><div className="button" onClick={() => setNewTaskFormOpen(true)}>Uusi tehtävä...</div></div>}
-          <div className="title-2">Tehtävät</div>
-          {data.tasks.map(task => {
-            if (editTask && editTask.id === task.id) {
-              return <TaskForm key={task.id} coachKey={coachKey}task={editTask} onSave={onSave} onCancel={() => onCancel(task.id)} />
-            }
-            return <Task key={task.id} task={task} onEdit={() => setEditTask(task)} />
-          })}
-        </div>
-      )
-    }
+  const content = () => {
+    return (
+      <>
+        <div className="title-2">Uusi tehtävä</div>
+        {newTaskFormOpen && <TaskForm coachKey={coachKey} onSave={onSave} onCancel={() => onCancel()} />}
+        {!newTaskFormOpen && <div className="task"><div className="button" onClick={() => setNewTaskFormOpen(true)}>Uusi tehtävä...</div></div>}
+        <div className="title-2">Tehtävät</div>
+        {data.tasks.map(task => {
+          if (editTask && editTask.id === task.id) {
+            return <TaskForm key={task.id} coachKey={coachKey}task={editTask} onSave={onSave} onCancel={() => onCancel(task.id)} />
+          }
+          return <Task key={task.id} task={task} onEdit={() => setEditTask(task)} />
+        })}
+      </>
+    )
   }
 
-  return (
-    <div>
-      <div className="title">Valmentajan sivut</div>
-      {resolveContent()}
-    </div>
-  )
+  return <DataPage content={content} error={error} data={data} title="Valmentajan sivut - Tehtävät" />
 }
 
 export default Tasks
