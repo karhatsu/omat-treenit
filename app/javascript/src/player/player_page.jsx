@@ -15,14 +15,27 @@ function PlayerPage({ match }) {
   const [error, setError] = useState(undefined)
   const [data, setData] = useState(undefined)
   const { params: { accessKey } } = match
+
   useEffect(() => {
-    fetchPlayer(accessKey, (err, json) => {
+    const fetchCallback = (err, json) => {
       if (err) {
         setError(err)
       } else {
         setData(json)
       }
-    })
+    }
+
+    fetchPlayer(accessKey, fetchCallback)
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        fetchPlayer(accessKey, fetchCallback)
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+    }
   }, [])
 
   const findAccomplishment = task => data.accomplishments.find(a => a.taskId === task.id)
