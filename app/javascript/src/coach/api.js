@@ -1,5 +1,13 @@
 import { handleApiConnectionError, handleApiResponse } from '../player/api'
 
+export function fetchCoachSummary(coachKey, callback) {
+  fetch(`/api/coach/${coachKey}/summary`, {
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response => {
+    handleApiResponse(response, callback)
+  }).catch(() => handleApiConnectionError(callback))
+}
+
 export function fetchTasks(coachKey, callback) {
   fetch(`/api/coach/${coachKey}/tasks`, {
     headers: { 'Content-Type': 'application/json' },
