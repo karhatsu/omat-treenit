@@ -18,8 +18,13 @@ function Players({ match }) {
     })
   }, [])
 
+  const buildUrl = accessKey => {
+    return `${window.location.protocol}//${window.location.host}/players/${accessKey}`
+  }
+
   const content = () => {
     return data.players.map(player => {
+      const url = buildUrl(player.accessKey)
       const percentage = Math.round(100 * player.accomplishments.length / data.taskCount)
       return (
         <div key={player.id} className="task">
@@ -33,6 +38,7 @@ function Players({ match }) {
               </div>
             )
           })}
+          <div className="task__description"><a href={url} target="_blank">{url}</a></div>
         </div>
       )
     })
