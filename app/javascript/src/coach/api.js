@@ -8,6 +8,14 @@ export function fetchCoachSummary(coachKey, callback) {
   }).catch(() => handleApiConnectionError(callback))
 }
 
+export function fetchPlayers(coachKey, callback) {
+  fetch(`/api/coach/${coachKey}/players`, {
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response => {
+    handleApiResponse(response, callback)
+  }).catch(() => handleApiConnectionError(callback))
+}
+
 export function fetchTasks(coachKey, callback) {
   fetch(`/api/coach/${coachKey}/tasks`, {
     headers: { 'Content-Type': 'application/json' },

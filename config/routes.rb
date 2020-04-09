@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     namespace :coach, path: 'coach/:coach_key' do
       resource :summary, only: :show
+      resources :players, only: :index
       resources :tasks, only: [:index, :create, :update]
     end
   end

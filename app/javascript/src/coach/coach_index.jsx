@@ -24,7 +24,10 @@ function CoachIndex({ match, history }) {
           <div>Tehtäviä: {data.taskCount}</div>
         </div>
         <div className="task">
-          <div className="button" onClick={() => history.push(`/coach/${coachKey}/tasks`)}>Tehtävät</div>
+          <div className="form__buttons">
+            <div className="button" onClick={() => history.push(`/coach/${coachKey}/tasks`)}>Tehtävät</div>
+            <div className="button" onClick={() => history.push(`/coach/${coachKey}/players`)}>Pelaajat</div>
+          </div>
         </div>
       </>
     )
