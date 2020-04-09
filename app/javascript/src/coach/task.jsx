@@ -7,7 +7,7 @@ function Task({ task, onEdit }) {
   return (
     <div className="task">
       <div className="task__title">{format(new Date(publishDate), 'd.M.Y')} {title}</div>
-      <div className="task__description">{description}</div>
+      <div className="task__description" dangerouslySetInnerHTML={{ __html: marked(description) }} />
       <a className="youtube-link" href={youtubeUrl} target="_blank">YouTube</a>
       <div className="title-3">Suorittaneet ({accomplishments.length})</div>
       {accomplishments.map(accomplishment => {

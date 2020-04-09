@@ -23,7 +23,7 @@ function Task({ task, accomplishment, accessKey, accomplished }) {
   return (
     <div className={classNames.join(' ')}>
       <div className="task__title">{format(new Date(publishDate), 'd.M.Y')} {title}</div>
-      <div className="task__description">{description}</div>
+      <div className="task__description" dangerouslySetInnerHTML={{ __html: marked(description) }} />
       {youtubeUrl && <YoutubeIframe url={youtubeUrl} />}
       {!formOpen && accomplishment && <hr />}
       {!formOpen && accomplishment && <Accomplished accomplishment={accomplishment} onEdit={() => setFormOpen(true)} />}
