@@ -32,7 +32,7 @@ function PlayerPage({ match }) {
 
   const content = () => {
     if (!data.tasks.length) {
-      return <div className="player">Tehtäviä ei ole vielä lisätty</div>
+      return <div className="box">Tehtäviä ei ole vielä lisätty</div>
     }
 
     const accomplishedPercentage = data.accomplishments.length / data.tasks.length
@@ -49,19 +49,19 @@ function PlayerPage({ match }) {
 
     return (
       <>
-        <div className="box player">
-          <div className="player__stats-summary">
+        <div className="box player-page">
+          <div className="player-page__stats-summary">
             Tehtäviä tehty {data.accomplishments.length} / {data.tasks.length}
-            <div className="player__coach-emoji">{likingEmoji(coachLiking)}</div>
+            <div className="player-page__coach-emoji">{likingEmoji(coachLiking)}</div>
           </div>
-          <div className="player__stats-bar">
-            <div className="player__stats-done" style={{ backgroundColor: getColor(accomplishedPercentage), width: `${100 * accomplishedPercentage}%` }} />
+          <div className="player-page__stats-bar">
+            <div className="player-page__stats-done" style={{ backgroundColor: getColor(accomplishedPercentage), width: `${100 * accomplishedPercentage}%` }} />
           </div>
           {!data.accomplishments.length && <div className="player__intro">Aloita etsimällä tehtävä, jonka olet suorittanut ja paina "Olen suorittanut tehtävän"-nappia!</div>}
         </div>
         <div className="title-2">Linkki omalle sivulle</div>
         <div className="box">
-          <div className="player__url-title">Tällä osoitteella pääset takaisin omalle sivullesi, ota osoite talteen:</div>
+          <div className="player-page__url-title">Tällä osoitteella pääset takaisin omalle sivullesi, ota osoite talteen:</div>
           <div>{window.location.href}</div>
         </div>
         <div className="title-2">Tehtävät</div>
