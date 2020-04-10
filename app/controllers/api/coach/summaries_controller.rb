@@ -1,6 +1,6 @@
 class Api::Coach::SummariesController < Api::Coach::CoachBaseController
   def show
-    @player_count = Player.count
+    @players = Player.all.order('name')
     @task_count = Task.count
   end
 end
