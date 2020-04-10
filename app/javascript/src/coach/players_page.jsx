@@ -18,8 +18,8 @@ function PlayersPage({ match }) {
       const url = buildUrl(player.accessKey)
       const percentage = Math.round(100 * player.accomplishments.length / data.taskCount)
       return (
-        <div key={player.id} className="task">
-          <div className="task__title">{player.name} ({player.accomplishments.length} / {data.taskCount} = {percentage}%)</div>
+        <div key={player.id} className="box task">
+          <div className="box__title">{player.name} ({player.accomplishments.length} / {data.taskCount} = {percentage}%)</div>
           {player.accomplishments.map(accomplishment => {
             return (
               <div className="task__accomplisher" key={accomplishment.id}>
@@ -29,7 +29,7 @@ function PlayersPage({ match }) {
               </div>
             )
           })}
-          <div className="task__description"><a href={url} target="_blank">{url}</a></div>
+          <div className="box__section"><a href={url} target="_blank">{url}</a></div>
         </div>
       )
     })

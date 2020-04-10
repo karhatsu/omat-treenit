@@ -11,11 +11,9 @@ function CoachIndexPage({ match, history }) {
   const content = () => {
     return (
       <>
-        <div className="task">
+        <div className="box">
           <div>Pelaajia: {data.playerCount}</div>
           <div>Tehtäviä: {data.taskCount}</div>
-        </div>
-        <div className="task">
           <div className="form__buttons">
             <div className="button" onClick={() => history.push(`/coach/${coachKey}/tasks`)}>Tehtävät</div>
             <div className="button" onClick={() => history.push(`/coach/${coachKey}/players`)}>Pelaajat</div>

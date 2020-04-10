@@ -27,9 +27,9 @@ function DataPage({ fetch, setData, data, title, content }) {
 
   const resolveContent = () => {
     if (error) {
-      return <div className="task"><div className="form__error">{error}</div></div>
+      return <div className="box"><div className="form__error">{error}</div></div>
     } else if (!data) {
-      return <div className="task">Ladataan...</div>
+      return <div className="box">Ladataan...</div>
     } else {
       return content()
     }

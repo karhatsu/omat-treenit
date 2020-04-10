@@ -38,7 +38,7 @@ function TasksPage({ match }) {
       <>
         <div className="title-2">Uusi tehtävä</div>
         {newTaskFormOpen && <TaskForm coachKey={coachKey} onSave={onSave} onCancel={() => onCancel()} />}
-        {!newTaskFormOpen && <div className="task"><div className="button" onClick={() => setNewTaskFormOpen(true)}>Uusi tehtävä...</div></div>}
+        {!newTaskFormOpen && <div className="box"><div className="button" onClick={() => setNewTaskFormOpen(true)}>Uusi tehtävä...</div></div>}
         <div className="title-2">Tehtävät</div>
         {data.tasks.map(task => {
           if (editTask && editTask.id === task.id) {

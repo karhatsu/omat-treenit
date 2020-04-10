@@ -7,19 +7,25 @@ $orange: rgba(255, 128, 0, 0.8);
 $white: rgba(255, 255, 255, 0.9);
 $white-60: rgba(255, 255, 255, 0.6);
 
-@mixin white-box($clickable: false, $marginTop: 8px) {
+@mixin white-box() {
   background-color: $white;
   border-radius: 6px;
   color: $black;
-  margin-top: $marginTop;
+  margin-top: 8px;
   padding: 8px;
   -webkit-tap-highlight-color: transparent;
+}
 
-  @if $clickable == true {
-    cursor: pointer;
+.box {
+  @include white-box();
 
-    &:active {
-      background-color: $white-60;
-    }
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__section {
+    margin: 8px 0;
   }
 }
