@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import StartForm from '../src/player/start_form'
 import PlayerPage from '../src/player/player_page'
 import CoachIndex from '../src/coach/coach_index'
-import Players from '../src/coach/players'
+import PlayersPage from '../src/coach/players_page'
 import TasksPage from '../src/coach/tasks_page'
 
 import '../src/app.scss'
@@ -13,7 +13,7 @@ import '../src/app.scss'
 const Application = () => {
   return (
     <Switch>
-      <Route path="/coach/:coachKey/players" component={Players} />
+      <Route path="/coach/:coachKey/players" component={PlayersPage} />
       <Route path="/coach/:coachKey/tasks" component={TasksPage} />
       <Route path="/coach/:coachKey" component={CoachIndex} />
       <Route path="/players/:accessKey" component={PlayerPage} />

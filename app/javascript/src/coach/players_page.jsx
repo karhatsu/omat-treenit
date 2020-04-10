@@ -3,7 +3,7 @@ import DataPage from '../data_page'
 import { fetchPlayers } from './api'
 import { likingEmoji } from '../emojis'
 
-function Players({ match }) {
+function PlayersPage({ match }) {
   const { params: { coachKey } } = match
   const [data, setData] = useState(undefined)
 
@@ -38,4 +38,4 @@ function Players({ match }) {
   return <DataPage fetch={fetch} setData={setData} content={content} data={data} title="Valmentajan sivut - Pelaajat" />
 }
 
-export default Players
+export default PlayersPage
