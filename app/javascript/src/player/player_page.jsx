@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { fetchPlayer } from './api'
 import Task from './task'
 
@@ -13,9 +13,18 @@ function getColor(value){
 
 function PlayerPage({ match }) {
   const [data, setData] = useState(undefined)
+  const [barAnimated, setBarAnimated] = useState(false)
   const { params: { accessKey } } = match
 
   const fetch = callback => fetchPlayer(accessKey, callback)
+
+  useEffect(() => {
+    if (data && !barAnimated) {
+      setTimeout(() => {
+        setBarAnimated(true)
+      }, 500)
+    }
+  }, [data, barAnimated])
 
   const findAccomplishment = task => data.accomplishments.find(a => a.taskId === task.id)
 
@@ -47,6 +56,7 @@ function PlayerPage({ match }) {
       coachLiking = 2
     }
 
+    const statsDoneStyle = barAnimated ? { backgroundColor: getColor(accomplishedPercentage), width: `${100 * accomplishedPercentage}%` } : { width: 0 }
     return (
       <>
         <div className="box player-page">
@@ -55,7 +65,7 @@ function PlayerPage({ match }) {
             <div className="player-page__coach-emoji">{likingEmoji(coachLiking)}</div>
           </div>
           <div className="player-page__stats-bar">
-            <div className="player-page__stats-done" style={{ backgroundColor: getColor(accomplishedPercentage), width: `${100 * accomplishedPercentage}%` }} />
+            <div className="player-page__stats-done" style={statsDoneStyle} id="tmp" />
           </div>
           {!data.accomplishments.length && <div className="player__intro">Aloita etsimällä tehtävä, jonka olet suorittanut ja paina "Olen suorittanut tehtävän"-nappia!</div>}
         </div>

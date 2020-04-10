@@ -25,6 +25,7 @@
 
   &__stats-done {
     height: 24px;
+    transition: width 1s ease 300ms;
   }
 
   &__intro {
