@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { fetchCoachSummary } from './api'
 import DataPage from '../data_page'
 
-function CoachIndex({ match, history }) {
+function CoachIndexPage({ match, history }) {
   const { params: { coachKey } } = match
   const [data, setData] = useState(undefined)
 
@@ -28,4 +28,4 @@ function CoachIndex({ match, history }) {
   return <DataPage fetch={fetch} setData={setData} content={content} data={data} title="Valmentajan sivut" />
 }
 
-export default CoachIndex
+export default CoachIndexPage
