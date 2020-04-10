@@ -19,6 +19,10 @@ function PlayerPage({ match }) {
   const fetch = callback => fetchPlayer(accessKey, callback)
 
   useEffect(() => {
+    localStorage && localStorage.setItem('accessKey', accessKey)
+  }, [])
+
+  useEffect(() => {
     if (data && !barAnimated) {
       setTimeout(() => {
         setBarAnimated(true)

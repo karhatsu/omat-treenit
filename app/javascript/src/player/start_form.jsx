@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createPlayer } from './api'
 
 function StartForm({ history }) {
   const [name, setName] = useState('')
   const [error, setError] = useState(undefined)
+
+  useEffect(() => {
+    if (localStorage) {
+      const accessKey = localStorage.getItem('accessKey')
+      if (accessKey) {
+        history.push(`/players/${accessKey}`)
+      }
+    }
+  }, [])
+
   const changeName = e => {
     setName(e.target.value)
   }
