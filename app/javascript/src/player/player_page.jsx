@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { fetchPlayer } from './api'
 import Task from './task'
 
-import './player.scss'
+import './player_page.scss'
 import { likingEmoji } from '../emojis'
 import DataPage from '../data_page'
 
