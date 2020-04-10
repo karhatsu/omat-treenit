@@ -32,7 +32,7 @@ function TaskForm({ coachKey, task, onSave, onCancel }) {
   }
 
   return (
-    <form className="form task" onSubmit={submit}>
+    <form className="form form--vertical box" onSubmit={submit}>
       {errors && <div className="form__error">{errors.join('. ')}</div>}
       <div className="form__field">
         <input type="date" value={data.publishDate} placeholder="yyyy-mm-dd" onChange={changeData('publishDate')} />
