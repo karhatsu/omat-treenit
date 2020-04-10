@@ -1,6 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-function DataPage({ data, error, title, content }) {
+function DataPage({ fetch, setData, data, title, content }) {
+  const [error, setError] = useState(undefined)
+
+  useEffect(() => {
+    const fetchCallback = (err, json) => {
+      if (err) {
+        setError(err)
+      } else {
+        setData(json)
+      }
+    }
+
+    fetch(fetchCallback)
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        fetch(fetchCallback)
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+    }
+  }, [])
+
   const resolveContent = () => {
     if (error) {
       return <div className="task"><div className="form__error">{error}</div></div>

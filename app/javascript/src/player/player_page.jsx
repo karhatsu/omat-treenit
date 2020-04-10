@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { fetchPlayer } from './api'
 import Task from './task'
 
@@ -12,31 +12,10 @@ function getColor(value){
 }
 
 function PlayerPage({ match }) {
-  const [error, setError] = useState(undefined)
   const [data, setData] = useState(undefined)
   const { params: { accessKey } } = match
 
-  useEffect(() => {
-    const fetchCallback = (err, json) => {
-      if (err) {
-        setError(err)
-      } else {
-        setData(json)
-      }
-    }
-
-    fetchPlayer(accessKey, fetchCallback)
-
-    const onVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        fetchPlayer(accessKey, fetchCallback)
-      }
-    }
-    document.addEventListener('visibilitychange', onVisibilityChange)
-    return () => {
-      document.removeEventListener('visibilitychange', onVisibilityChange)
-    }
-  }, [])
+  const fetch = callback => fetchPlayer(accessKey, callback)
 
   const findAccomplishment = task => data.accomplishments.find(a => a.taskId === task.id)
 
@@ -102,7 +81,7 @@ function PlayerPage({ match }) {
   }
 
   const title = data ? `FC Kontu P11 — ${data.player.name}` : 'FC Kontu P11'
-  return <DataPage content={content} data={data} error={error} title={title} />
+  return <DataPage fetch={fetch} setData={setData} content={content} data={data} title={title} />
 }
 
 export default PlayerPage

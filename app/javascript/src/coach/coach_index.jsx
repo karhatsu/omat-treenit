@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { fetchCoachSummary } from './api'
 import DataPage from '../data_page'
 
 function CoachIndex({ match, history }) {
   const { params: { coachKey } } = match
-  const [error, setError] = useState(undefined)
   const [data, setData] = useState(undefined)
-  useEffect(() => {
-    fetchCoachSummary(coachKey, (err, json) => {
-      if (err) {
-        setError(err)
-      } else {
-        setData(json)
-      }
-    })
-  }, [])
+
+  const fetch = callback => fetchCoachSummary(coachKey, callback)
 
   const content = () => {
     return (
@@ -33,7 +25,7 @@ function CoachIndex({ match, history }) {
     )
   }
 
-  return <DataPage content={content} data={data} error={error} title="Valmentajan sivut" />
+  return <DataPage fetch={fetch} setData={setData} content={content} data={data} title="Valmentajan sivut" />
 }
 
 export default CoachIndex

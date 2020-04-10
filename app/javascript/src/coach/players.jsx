@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import DataPage from '../data_page'
 import { fetchPlayers } from './api'
 import { likingEmoji } from '../emojis'
 
 function Players({ match }) {
   const { params: { coachKey } } = match
-  const [error, setError] = useState(undefined)
   const [data, setData] = useState(undefined)
 
-  useEffect(() => {
-    fetchPlayers(coachKey, (err, json) => {
-      if (err) {
-        setError(err)
-      } else {
-        setData(json)
-      }
-    })
-  }, [])
+  const fetch = callback => fetchPlayers(coachKey, callback)
 
   const buildUrl = accessKey => {
     return `${window.location.protocol}//${window.location.host}/players/${accessKey}`
@@ -44,7 +35,7 @@ function Players({ match }) {
     })
   }
 
-  return <DataPage content={content} data={data} error={error} title="Valmentajan sivut - Pelaajat" />
+  return <DataPage fetch={fetch} setData={setData} content={content} data={data} title="Valmentajan sivut - Pelaajat" />
 }
 
 export default Players

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { fetchTasks } from './api'
 import Task from './task'
 import TaskForm from './task_form'
@@ -6,20 +6,11 @@ import DataPage from '../data_page'
 
 function Tasks({ match }) {
   const { params: { coachKey } } = match
-  const [error, setError] = useState(undefined)
   const [data, setData] = useState(undefined)
   const [newTaskFormOpen, setNewTaskFormOpen] = useState(false)
   const [editTask, setEditTask] = useState(undefined)
 
-  useEffect(() => {
-    fetchTasks(coachKey, (err, json) => {
-      if (err) {
-        setError(err)
-      } else {
-        setData(json)
-      }
-    })
-  }, [])
+  const fetch = callback => fetchTasks(coachKey, callback)
 
   const onSave = task => {
     const tasks = [...data.tasks]
@@ -59,7 +50,7 @@ function Tasks({ match }) {
     )
   }
 
-  return <DataPage content={content} error={error} data={data} title="Valmentajan sivut - Tehtävät" />
+  return <DataPage fetch={fetch} setData={setData} content={content} data={data} title="Valmentajan sivut - Tehtävät" />
 }
 
 export default Tasks
