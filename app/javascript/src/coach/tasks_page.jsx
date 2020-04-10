@@ -4,7 +4,7 @@ import Task from './task'
 import TaskForm from './task_form'
 import DataPage from '../data_page'
 
-function Tasks({ match }) {
+function TasksPage({ match }) {
   const { params: { coachKey } } = match
   const [data, setData] = useState(undefined)
   const [newTaskFormOpen, setNewTaskFormOpen] = useState(false)
@@ -53,4 +53,4 @@ function Tasks({ match }) {
   return <DataPage fetch={fetch} setData={setData} content={content} data={data} title="Valmentajan sivut - Tehtävät" />
 }
 
-export default Tasks
+export default TasksPage
