@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { format } from "date-fns"
 import { fetchCoachSummary } from './api'
 import DataPage from '../data_page'
+import { likingEmoji } from '../emojis'
 
 function CoachIndexPage({ match, history }) {
   const { params: { coachKey } } = match
@@ -27,6 +29,18 @@ function CoachIndexPage({ match, history }) {
           <div className="form__buttons">
             <div className="button" onClick={() => history.push(`/coach/${coachKey}/tasks`)}>Tehtävät</div>
           </div>
+        </div>
+        <div className="title-2">Viimeisimmät suoritusmerkinnät</div>
+        <div className="box">
+          {data.latestAccomplishments.map(accomplishment => {
+            return (
+              <div key={accomplishment.id}>
+                <div className="box__title">{format(new Date(accomplishment.createdAt), 'd.M.Y H:m')} {accomplishment.task.title}</div>
+                <div className="box__section">{likingEmoji(accomplishment.liking)} {accomplishment.player.name}</div>
+                {accomplishment.comment && <div className="box__section">{accomplishment.comment}</div>}
+              </div>
+            )
+          })}
         </div>
       </>
     )
