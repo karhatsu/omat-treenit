@@ -35,7 +35,7 @@ function CoachIndexPage({ match, history }) {
           {data.latestAccomplishments.map(accomplishment => {
             return (
               <div key={accomplishment.id}>
-                <div className="box__title">{format(new Date(accomplishment.createdAt), 'd.M.Y H:m')} {accomplishment.task.title}</div>
+                <div className="box__title">{format(new Date(accomplishment.createdAt), 'd.M.Y HH:mm')} {accomplishment.task.title}</div>
                 <div className="box__section">{likingEmoji(accomplishment.liking)} {accomplishment.player.name}</div>
                 {accomplishment.comment && <div className="box__section">{accomplishment.comment}</div>}
               </div>
