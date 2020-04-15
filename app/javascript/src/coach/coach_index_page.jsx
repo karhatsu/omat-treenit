@@ -23,11 +23,17 @@ function CoachIndexPage({ match, history }) {
             <div className="button" onClick={() => history.push(`/coach/${coachKey}/players`)}>Pelaajat</div>
           </div>
         </div>
-        <div className="title-2">Tehtävät</div>
+        <div className="title-2">Viimeisimmät tehtävät</div>
         <div className="box">
-          <div className="box__title">Yhteensä: {data.taskCount}</div>
+          {data.latestTasks.map(task => {
+            return (
+              <div key={task.id} className="box__section">
+                {format(new Date(task.publishDate), 'd.M.Y')} {task.title} &ndash; {task.accomplishmentCount} suoritusta
+              </div>
+            )
+          })}
           <div className="form__buttons">
-            <div className="button" onClick={() => history.push(`/coach/${coachKey}/tasks`)}>Tehtävät</div>
+            <div className="button" onClick={() => history.push(`/coach/${coachKey}/tasks`)}>Kaikki tehtävät</div>
           </div>
         </div>
         <div className="title-2">Viimeisimmät suoritusmerkinnät</div>
