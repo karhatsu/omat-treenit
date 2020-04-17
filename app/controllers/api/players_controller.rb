@@ -16,6 +16,6 @@ class Api::PlayersController < Api::ApiBaseController
   private
 
   def player_params
-    params.require(:player).permit(:name)
+    params.require(:player).permit(:team_id, :name)
   end
 end

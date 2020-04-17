@@ -3,6 +3,7 @@ fi:
     attributes:
       player:
         name: Pelaajan nimi
+        team: Joukkue
       task:
         title: Otsikko
         description: Kuvaus

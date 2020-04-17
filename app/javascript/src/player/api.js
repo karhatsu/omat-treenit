@@ -1,5 +1,11 @@
 const unexpectedErrorMsg = 'Odottamaton virhe, yritä uudestaan.'
 
+export function fetchTeams(callback) {
+  fetch('/api/teams').then(response => {
+    handleApiResponse(response, callback)
+  }).catch(() => handleApiConnectionError(callback))
+}
+
 export function fetchPlayer(accessKey, callback) {
   fetch(`/api/players/${accessKey}`, {
     headers: { 'Content-Type': 'application/json' },
@@ -8,11 +14,11 @@ export function fetchPlayer(accessKey, callback) {
   }).catch(() => handleApiConnectionError(callback))
 }
 
-export function createPlayer(playerName, callback) {
+export function createPlayer(player, callback) {
   fetch('/api/players', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ player: { name: playerName } })
+    body: JSON.stringify({ player })
   }).then(response => {
     handleApiResponse(response, callback)
   }).catch(() => handleApiConnectionError(callback))

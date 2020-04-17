@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get '/players/:access_key', to: 'players#show'
     put '/players/:access_key/accomplishment', to: 'accomplishments#update'
     resources :players, only: :create
+    resources :teams, only: :index
 
     namespace :coach, path: 'coach/:coach_key' do
       resource :summary, only: :show

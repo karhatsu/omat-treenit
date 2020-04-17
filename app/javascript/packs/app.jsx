@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import StartForm from '../src/player/start_form'
+import HomePage from '../src/home_page'
 import PlayerPage from '../src/player/player_page'
 import CoachIndexPage from '../src/coach/coach_index_page'
 import PlayersPage from '../src/coach/players_page'
@@ -17,7 +17,7 @@ const Application = () => {
       <Route path="/coach/:coachKey/tasks" component={TasksPage} />
       <Route path="/coach/:coachKey" component={CoachIndexPage} />
       <Route path="/players/:accessKey" component={PlayerPage} />
-      <Route path="/" component={StartForm} />
+      <Route path="/" component={HomePage} />
     </Switch>
   )
 }
