@@ -94,7 +94,7 @@ function PlayerPage({ match }) {
     )
   }
 
-  const title = data ? `FC Kontu P11 — ${data.player.name}` : 'FC Kontu P11'
+  const title = data ? `${data.team.name} — ${data.player.name}` : 'Omat treenit'
   return <DataPage fetch={fetch} setData={setData} content={content} data={data} title={title} />
 }
 
