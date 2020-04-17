@@ -1,6 +1,6 @@
 class Api::Coach::PlayersController < Api::Coach::CoachBaseController
   def index
-    @players = Player.all.includes(accomplishments: :task).order('name')
-    @task_count = Task.count
+    @players = @team.players.includes(accomplishments: :task).order('name')
+    @task_count = @team.tasks.count
   end
 end

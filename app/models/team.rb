@@ -1,4 +1,8 @@
 class Team < ApplicationRecord
+  has_many :players
+  has_many :tasks
+  has_many :accomplishments, through: :players
+
   validates :name, presence: true, uniqueness: true
   validates :coach_key, presence: true, uniqueness: true
 

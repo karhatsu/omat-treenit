@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  belongs_to :team
   has_many :accomplishments
 
   validates :publish_date, presence: true

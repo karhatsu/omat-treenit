@@ -1,4 +1,5 @@
 class Player < ApplicationRecord
+  belongs_to :team
   has_many :accomplishments
 
   validates :name, presence: true, uniqueness: {

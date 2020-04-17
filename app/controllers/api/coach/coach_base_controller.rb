@@ -4,8 +4,6 @@ class Api::Coach::CoachBaseController < Api::ApiBaseController
   private
 
   def verify_coach_key
-    if (Rails.env.development? && params[:coach_key] != 'local') || (Rails.env.production? && params[:coach_key] != ENV['COACH_KEY'])
-      render status: 401, json: { errors: ['Pääsy kielletty! 😠'] }
-    end
+    @team = Team.where('coach_key=?', params[:coach_key]).first or render status: 401, json: { errors: ['Pääsy kielletty! 😠'] }
   end
 end
