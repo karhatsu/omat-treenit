@@ -52,7 +52,8 @@ function CoachIndexPage({ match, history }) {
     )
   }
 
-  return <DataPage fetch={fetch} setData={setData} content={content} data={data} title="Valmentajan sivut" />
+  const title = data ? data.team.name : 'Valmentajan sivut'
+  return <DataPage fetch={fetch} setData={setData} content={content} data={data} title={title} />
 }
 
 export default CoachIndexPage

@@ -1,3 +1,4 @@
+json.team @team, :name
 json.players @players do |player|
   json.(player, :id, :name)
   json.accomplishment_count player.accomplishments.count
