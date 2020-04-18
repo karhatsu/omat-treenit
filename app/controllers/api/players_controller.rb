@@ -3,7 +3,7 @@ class Api::PlayersController < Api::ApiBaseController
 
   def show
     return render status: 404, json: { errors: ['Pelaajaa ei löytynyt, tarkasta sivun osoite'] } unless @player
-    @tasks = Task.all.order('publish_date DESC')
+    @tasks = @player.team.tasks.order('publish_date DESC')
   end
 
   def create
