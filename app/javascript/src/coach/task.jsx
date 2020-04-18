@@ -8,7 +8,7 @@ function Task({ task, onEdit }) {
     <div className="box task">
       <div className="box__title">{format(new Date(publishDate), 'd.M.Y')} {title}</div>
       <div className="box__section" dangerouslySetInnerHTML={{ __html: marked(description) }} />
-      <a className="youtube-link" href={youtubeUrl} target="_blank">YouTube</a>
+      {youtubeUrl && <a className="youtube-link" href={youtubeUrl} target="_blank">YouTube</a>}
       <div className="title-3">Suorittaneet ({accomplishments.length})</div>
       {accomplishments.map(accomplishment => {
         return (
