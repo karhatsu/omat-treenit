@@ -3,10 +3,10 @@ class Team < ApplicationRecord
   has_many :tasks
   has_many :accomplishments, through: :players
 
+  before_validation :generate_coach_key, on: :create
+
   validates :name, presence: true, uniqueness: true
   validates :coach_key, presence: true, uniqueness: true
-
-  before_create :generate_coach_key
 
   private
 
