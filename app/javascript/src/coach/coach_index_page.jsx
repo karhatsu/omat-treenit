@@ -3,6 +3,7 @@ import { format } from "date-fns"
 import { fetchCoachSummary } from './api'
 import DataPage from '../data_page'
 import { likingEmoji } from '../emojis'
+import TasksSummary from './tasks_summary'
 
 function CoachIndexPage({ match, history }) {
   const { params: { coachKey } } = match
@@ -23,19 +24,7 @@ function CoachIndexPage({ match, history }) {
             <div className="button" onClick={() => history.push(`/coach/${coachKey}/players`)}>Pelaajat</div>
           </div>
         </div>
-        <div className="title-2">Viimeisimmät tehtävät</div>
-        <div className="box">
-          {data.latestTasks.map(task => {
-            return (
-              <div key={task.id} className="box__section">
-                {format(new Date(task.publishDate), 'd.M.Y')} {task.title} &ndash; {task.accomplishmentCount} suoritusta
-              </div>
-            )
-          })}
-          <div className="form__buttons">
-            <div className="button" onClick={() => history.push(`/coach/${coachKey}/tasks`)}>Kaikki tehtävät</div>
-          </div>
-        </div>
+        <TasksSummary coachKey={coachKey} history={history} latestTasks={data.latestTasks} />
         <div className="title-2">Viimeisimmät suoritusmerkinnät</div>
         <div className="box">
           {data.latestAccomplishments.map(accomplishment => {
