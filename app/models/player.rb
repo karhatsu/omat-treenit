@@ -2,11 +2,12 @@ class Player < ApplicationRecord
   belongs_to :team
   has_many :accomplishments
 
+  before_validation :generate_access_key, on: :create
+
   validates :name, presence: true, uniqueness: {
       case_sensitive: false, message: 'on jo varattu. Jos olet aloittanut käytön jo aiemmin, käytä saamaasi linkkiä tai pyydä se Henriltä.'
   }
-
-  before_create :generate_access_key
+  validates :access_key, presence: true, uniqueness: true
 
   private
 
