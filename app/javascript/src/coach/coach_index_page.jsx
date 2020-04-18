@@ -27,6 +27,7 @@ function CoachIndexPage({ match, history }) {
         <TasksSummary coachKey={coachKey} history={history} latestTasks={data.latestTasks} />
         <div className="title-2">Viimeisimmät suoritusmerkinnät</div>
         <div className="box">
+          {!data.latestAccomplishments.length && <div>Ei suorituksia</div>}
           {data.latestAccomplishments.map(accomplishment => {
             return (
               <div key={accomplishment.id} className="box__section">
