@@ -3,6 +3,7 @@ import DataPage from '../data_page'
 import { fetchPlayers } from './api'
 import { likingEmoji } from '../emojis'
 import CoachComment from './coach_comment'
+import { format } from "date-fns"
 
 function PlayersPage({ match }) {
   const { params: { coachKey } } = match
@@ -33,8 +34,11 @@ function PlayersPage({ match }) {
             return (
               <div className="task__accomplisher" key={accomplishment.id}>
                 <div className="task__accomplisher-emoji">{likingEmoji(accomplishment.liking)}</div>
-                <div>{accomplishment.task.title}</div>
-                {accomplishment.comment && <div className="task__accomplisher-comment">{accomplishment.comment}</div>}
+                <div>
+                  {accomplishment.task.title}
+                  {accomplishment.comment && <span className="task__accomplisher-comment">{accomplishment.comment}</span>}
+                  <span className="task__accomplishment-time">({format(new Date(accomplishment.createdAt), 'd.M.Y HH:mm')})</span>
+                </div>
               </div>
             )
           })}
