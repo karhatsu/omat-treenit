@@ -15,10 +15,10 @@ function PlayersPage({ match }) {
     return `${window.location.protocol}//${window.location.host}/players/${accessKey}`
   }
 
-  const onCommentSave = (playerId, coachComment) => {
+  const onCommentSave = (playerId, newData) => {
     const players = [...data.players]
     const index = players.findIndex(p => p.id === playerId)
-    players[index] = { ...players[index], coachComment }
+    players[index] = { ...players[index], ...newData }
     setData({ ...data, players })
   }
 
@@ -29,7 +29,7 @@ function PlayersPage({ match }) {
       return (
         <div key={player.id} className="box task">
           <div className="box__title">{player.name} ({player.accomplishments.length} / {data.taskCount} = {percentage}%)</div>
-          <CoachComment coachKey={coachKey} playerId={player.id} coachComment={player.coachComment} onSave={onCommentSave} />
+          <CoachComment coachKey={coachKey} playerId={player.id} coachComment={player.coachComment} commentedAt={player.coachCommentedAt} onSave={onCommentSave} />
           {player.accomplishments.map(accomplishment => {
             return (
               <div className="task__accomplisher" key={accomplishment.id}>
