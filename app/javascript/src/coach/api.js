@@ -43,3 +43,13 @@ export function updateTask(coachKey, taskId, data, callback) {
     handleApiResponse(response, callback)
   }).catch(() => handleApiConnectionError(callback))
 }
+
+export function saveCoachComment(coachKey, playerId, coachComment, callback) {
+  fetch(`/api/coach/${coachKey}/players/${playerId}/coach_comment`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ coachComment }),
+  }).then(response => {
+    handleApiResponse(response, callback)
+  }).catch(() => handleApiConnectionError(callback))
+}

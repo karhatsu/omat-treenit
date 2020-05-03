@@ -1,0 +1,19 @@
+@import "../variables";
+
+.coach-comment {
+  margin: 0 0 8px;
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__text {
+    margin: 4px 0;
+  }
+
+  &__editLink {
+    color: $green;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

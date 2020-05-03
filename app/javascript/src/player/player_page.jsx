@@ -73,6 +73,12 @@ function PlayerPage({ match }) {
           </div>
           {!data.accomplishments.length && <div className="player__intro">Aloita etsimällä tehtävä, jonka olet suorittanut ja paina "Olen suorittanut tehtävän"-nappia!</div>}
         </div>
+        {data.player.coachComment && (
+          <>
+            <div className="title-2">Valmentajan terveiset</div>
+            <div className="box player-page__coach-comment">{data.player.coachComment}</div>
+          </>
+        )}
         <div className="title-2">Linkki omalle sivulle</div>
         <div className="box">
           <div className="player-page__url-title">Tällä osoitteella pääset takaisin omalle sivullesi, ota osoite talteen:</div>

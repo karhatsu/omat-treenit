@@ -28,6 +28,10 @@
     transition: width 1s ease 300ms;
   }
 
+  &__coach-comment {
+    font-size: 16px;
+  }
+
   &__intro {
     color: $red;
     font-weight: 600;

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import DataPage from '../data_page'
 import { fetchPlayers } from './api'
 import { likingEmoji } from '../emojis'
+import CoachComment from './coach_comment'
 
 function PlayersPage({ match }) {
   const { params: { coachKey } } = match
@@ -13,6 +14,13 @@ function PlayersPage({ match }) {
     return `${window.location.protocol}//${window.location.host}/players/${accessKey}`
   }
 
+  const onCommentSave = (playerId, coachComment) => {
+    const players = [...data.players]
+    const index = players.findIndex(p => p.id === playerId)
+    players[index] = { ...players[index], coachComment }
+    setData({ ...data, players })
+  }
+
   const content = () => {
     return data.players.map(player => {
       const url = buildUrl(player.accessKey)
@@ -20,6 +28,7 @@ function PlayersPage({ match }) {
       return (
         <div key={player.id} className="box task">
           <div className="box__title">{player.name} ({player.accomplishments.length} / {data.taskCount} = {percentage}%)</div>
+          <CoachComment coachKey={coachKey} playerId={player.id} coachComment={player.coachComment} onSave={onCommentSave} />
           {player.accomplishments.map(accomplishment => {
             return (
               <div className="task__accomplisher" key={accomplishment.id}>
