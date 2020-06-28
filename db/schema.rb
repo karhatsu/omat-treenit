@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_070655) do
+ActiveRecord::Schema.define(version: 2020_06_28_071359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_070655) do
     t.string "coach_key"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "visible", default: true, null: false
   end
 
   add_foreign_key "accomplishments", "players"

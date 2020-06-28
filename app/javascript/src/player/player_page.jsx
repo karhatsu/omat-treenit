@@ -30,6 +30,12 @@ function PlayerPage({ match }) {
     }
   }, [data, barAnimated])
 
+  useEffect(() => {
+    if (data && !data.team.visible && localStorage) {
+      localStorage.removeItem('accessKey')
+    }
+  }, [data && data.team.visible])
+
   const findAccomplishment = task => data.accomplishments.find(a => a.taskId === task.id)
 
   const taskAccomplished = accomplishment => {
@@ -44,6 +50,15 @@ function PlayerPage({ match }) {
   }
 
   const content = () => {
+    if (!data.team.visible) {
+      return (
+        <div className="box">
+          <div className="form__error">Oma sivusi on poistunut käytöstä</div>
+          <div><a href="/">Siirry aloitussivulle</a></div>
+        </div>
+      )
+    }
+
     if (!data.tasks.length) {
       return <div className="box">Tehtäviä ei ole vielä lisätty</div>
     }

@@ -8,6 +8,8 @@ class Team < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :coach_key, presence: true, uniqueness: true
 
+  scope :visible, -> { where visible: true }
+
   private
 
   def generate_coach_key
