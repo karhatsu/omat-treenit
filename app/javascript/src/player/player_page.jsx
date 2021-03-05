@@ -81,7 +81,7 @@ function PlayerPage({ match }) {
         <div className="box player-page">
           <div className="player-page__stats-summary">
             Tehtäviä tehty {data.accomplishments.length} / {data.tasks.length}
-            <div className="player-page__coach-emoji">{likingEmoji(coachLiking)}</div>
+            {coachLiking > 0 && <div className="player-page__coach-emoji">{likingEmoji(coachLiking)}</div>}
           </div>
           <div className="player-page__stats-bar">
             <div className="player-page__stats-done" style={statsDoneStyle} id="tmp" />
