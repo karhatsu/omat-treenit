@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import DataPage from '../data_page'
 import { fetchPlayers } from './api'
-import { likingEmoji } from '../emojis'
 import CoachComment from './coach_comment'
-import { format } from "date-fns"
+import Accomplishment from './accomplishment'
 
 function PlayersPage({ match }) {
   const { params: { coachKey } } = match
@@ -31,17 +30,7 @@ function PlayersPage({ match }) {
           <div className="box__title">{player.name} ({player.accomplishments.length} / {data.taskCount} = {percentage}%)</div>
           <CoachComment coachKey={coachKey} playerId={player.id} coachComment={player.coachComment} commentedAt={player.coachCommentedAt} onSave={onCommentSave} />
           {player.accomplishments.map(accomplishment => {
-            return (
-              <div className="task__accomplisher" key={accomplishment.id}>
-                <div className="task__accomplisher-title-row">
-                  <div className="task__accomplisher-emoji">{likingEmoji(accomplishment.liking)}</div>
-                  <div className="task__accomplisher-title">
-                    {format(new Date(accomplishment.createdAt), 'd.M.Y HH:mm')} &ndash; {accomplishment.task.title}
-                  </div>
-                </div>
-                {accomplishment.comment && <div className="task__accomplisher-comment">{accomplishment.comment}</div>}
-              </div>
-            )
+            return <Accomplishment key={accomplishment.id} accomplishment={accomplishment} title={accomplishment.task.title} />
           })}
           <div className="box__section"><a href={url} target="_blank">{url}</a></div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { format } from "date-fns"
-import { likingEmoji } from '../emojis'
+import Accomplishment from './accomplishment'
 
 function Task({ task, onEdit }) {
   const { publishDate, title, description, youtubeUrl, accomplishments } = task
@@ -14,15 +14,7 @@ function Task({ task, onEdit }) {
       </div>
       <div className="title-3">Suorittaneet ({accomplishments.length})</div>
       {accomplishments.map(accomplishment => {
-        return (
-          <div className="task__accomplisher" key={accomplishment.id}>
-            <div className="task__accomplisher-title-row">
-              <div className="task__accomplisher-emoji">{likingEmoji(accomplishment.liking)}</div>
-              <div className="task__accomplisher-title">{accomplishment.player.name}</div>
-            </div>
-            {accomplishment.comment && <div className="task__accomplisher-comment">{accomplishment.comment}</div>}
-          </div>
-        )
+        return <Accomplishment key={accomplishment.id} accomplishment={accomplishment} title={accomplishment.player.name} />
       })}
     </div>
   )

@@ -10,37 +10,9 @@
   iframe {
     margin: 8px 0;
   }
-
-  &__accomplisher {
-    line-height: 24px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 8px;
-  }
-
-  &__accomplisher-title-row {
-    display: flex;
-    align-items: center;
-  }
-
-  &__accomplisher-emoji {
-    font-size: 24px;
-    margin-right: 6px;
-  }
-
-  &__accomplisher-title {
-    font-weight: 600;
-  }
-
-  &__accomplisher-comment {
-    font-style: italic;
-    line-height: 14px;
-    margin-top: 4px;
-  }
 }
 
 a.youtube-link {
   display: block;
   margin-top: 8px;
 }
-
