@@ -35,12 +35,11 @@ function PlayersPage({ match }) {
               <div className="task__accomplisher" key={accomplishment.id}>
                 <div className="task__accomplisher-title-row">
                   <div className="task__accomplisher-emoji">{likingEmoji(accomplishment.liking)}</div>
-                  <div className="task__accomplisher-title">{accomplishment.task.title}</div>
+                  <div className="task__accomplisher-title">
+                    {format(new Date(accomplishment.createdAt), 'd.M.Y HH:mm')} &ndash; {accomplishment.task.title}
+                  </div>
                 </div>
-                <div>
-                  {accomplishment.comment && <span className="task__accomplisher-comment">{accomplishment.comment}</span>}
-                  <span className="task__accomplishment-time">({format(new Date(accomplishment.createdAt), 'd.M.Y HH:mm')})</span>
-                </div>
+                {accomplishment.comment && <div className="task__accomplisher-comment">{accomplishment.comment}</div>}
               </div>
             )
           })}
