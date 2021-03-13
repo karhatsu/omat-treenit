@@ -14,9 +14,13 @@
   &__accomplisher {
     line-height: 24px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin-top: 8px;
+  }
+
+  &__accomplisher-title-row {
+    display: flex;
     align-items: center;
-    justify-content: flex-start;
   }
 
   &__accomplisher-emoji {
@@ -24,10 +28,14 @@
     margin-right: 6px;
   }
 
+  &__accomplisher-title {
+    font-weight: 600;
+  }
+
   &__accomplisher-comment {
     font-style: italic;
     line-height: 14px;
-    margin-left: 4px;
+    margin-top: 4px;
   }
 
   &__accomplishment-time {

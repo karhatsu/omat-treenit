@@ -33,9 +33,11 @@ function PlayersPage({ match }) {
           {player.accomplishments.map(accomplishment => {
             return (
               <div className="task__accomplisher" key={accomplishment.id}>
-                <div className="task__accomplisher-emoji">{likingEmoji(accomplishment.liking)}</div>
+                <div className="task__accomplisher-title-row">
+                  <div className="task__accomplisher-emoji">{likingEmoji(accomplishment.liking)}</div>
+                  <div className="task__accomplisher-title">{accomplishment.task.title}</div>
+                </div>
                 <div>
-                  {accomplishment.task.title}
                   {accomplishment.comment && <span className="task__accomplisher-comment">{accomplishment.comment}</span>}
                   <span className="task__accomplishment-time">({format(new Date(accomplishment.createdAt), 'd.M.Y HH:mm')})</span>
                 </div>

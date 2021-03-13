@@ -30,10 +30,15 @@ function CoachIndexPage({ match, history }) {
           {!data.latestAccomplishments.length && <div>Ei suorituksia</div>}
           {data.latestAccomplishments.map(accomplishment => {
             return (
-              <div key={accomplishment.id} className="box__section">
-                {format(new Date(accomplishment.createdAt), 'd.M.Y HH:mm')} &ndash; {accomplishment.task
-                .title} &ndash; {likingEmoji(accomplishment.liking)} {accomplishment.player.name} {accomplishment.comment
-                && <i>({accomplishment.comment})</i>}
+              <div className="task__accomplisher" key={accomplishment.id}>
+                <div className="task__accomplisher-title-row">
+                  <div className="task__accomplisher-emoji">{likingEmoji(accomplishment.liking)}</div>
+                  <div className="task__accomplisher-title">
+                    {format(new Date(accomplishment.createdAt), 'd.M.Y HH:mm')} &ndash; {accomplishment.player.name}
+                  </div>
+                </div>
+                <div>{accomplishment.task.title}</div>
+                {accomplishment.comment && <div className="task__accomplisher-comment">{accomplishment.comment}</div>}
               </div>
             )
           })}
