@@ -49,6 +49,11 @@ body {
     font-weight: 600;
   }
 
+  &__error-link {
+    display: block;
+    margin-top: 8px;
+  }
+
   &__field {
     input {
       border-radius: 4px;

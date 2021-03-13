@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 
 function DataPage({ fetch, setData, data, title, content }) {
   const [error, setError] = useState(undefined)
+  const location = useLocation()
 
   useEffect(() => {
     const fetchCallback = (err, json) => {
@@ -27,7 +29,12 @@ function DataPage({ fetch, setData, data, title, content }) {
 
   const resolveContent = () => {
     if (error) {
-      return <div className="box"><div className="form__error">{error}</div></div>
+      return (
+        <div className="box">
+          <div className="form__error">{error}</div>
+          <a href={location.pathname} className="form__error-link">Päivitä sivu</a>
+        </div>
+      )
     } else if (!data) {
       return <div className="box">Ladataan...</div>
     } else {
