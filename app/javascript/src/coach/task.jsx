@@ -9,6 +9,9 @@ function Task({ task, onEdit }) {
       <div className="box__title">{format(new Date(publishDate), 'd.M.Y')} {title}</div>
       <div className="box__section" dangerouslySetInnerHTML={{ __html: marked(description) }} />
       {youtubeUrl && <a className="youtube-link" href={youtubeUrl} target="_blank">YouTube</a>}
+      <div className="form__buttons">
+        <div className="button" onClick={onEdit}>Muokkaa</div>
+      </div>
       <div className="title-3">Suorittaneet ({accomplishments.length})</div>
       {accomplishments.map(accomplishment => {
         return (
@@ -21,9 +24,6 @@ function Task({ task, onEdit }) {
           </div>
         )
       })}
-      <div className="form__buttons">
-        <div className="button" onClick={onEdit}>Muokkaa</div>
-      </div>
     </div>
   )
 }
