@@ -28,7 +28,13 @@ function CoachIndexPage({ match, history }) {
         <div className="box">
           {!data.latestAccomplishments.length && <div>Ei suorituksia</div>}
           {data.latestAccomplishments.map(accomplishment => {
-            return <Accomplishment key={accomplishment.id} accomplishment={accomplishment} title={accomplishment.player.name} />
+            return (
+              <Accomplishment
+                key={accomplishment.id}
+                accomplishment={accomplishment}
+                title={`${accomplishment.player.name} (${accomplishment.task.title})`}
+              />
+            )
           })}
         </div>
       </>
