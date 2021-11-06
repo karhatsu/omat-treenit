@@ -1,5 +1,6 @@
 import React from 'react'
 import { format } from "date-fns"
+import { marked } from 'marked'
 import Accomplishment from './accomplishment'
 
 function Task({ task, onEdit }) {
