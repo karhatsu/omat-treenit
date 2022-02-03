@@ -77,10 +77,16 @@ body {
   display: inline-block;
   padding: 8px 16px;
   -webkit-appearance: none;
-}
 
-.button--primary {
-  border: 2px solid $green;
+  &--primary {
+    border: 2px solid $green;
+    padding: 7px 15px;
+  }
+
+  &--danger {
+    border: 1px solid $red;
+    padding: 7px 15px;
+  }
 }
 
 .form__buttons {

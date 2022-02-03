@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import DataPage from '../data_page'
-import { fetchPlayers } from './api'
+import { deletePlayer, fetchPlayers } from './api'
 import CoachComment from './coach_comment'
 import Accomplishment from './accomplishment'
 
@@ -21,6 +21,23 @@ function PlayersPage({ match }) {
     setData({ ...data, players })
   }
 
+  const onDelete = useCallback(player => {
+    if (confirm('Haluatko varmasti poistaa pelaajan? Tietoja ei voida palauttaa.')) {
+      deletePlayer(coachKey, player.id, err => {
+        if (err) {
+          console.error('Player deletion failed', err)
+        } else {
+          setData(data => {
+            const players = [...data.players]
+            const index = players.findIndex(p => p.id === player.id)
+            players.splice(index, 1)
+            return { ...data, players }
+          })
+        }
+      })
+    }
+  }, [])
+
   const content = () => {
     return data.players.map(player => {
       const url = buildUrl(player.accessKey)
@@ -33,6 +50,9 @@ function PlayersPage({ match }) {
             return <Accomplishment key={accomplishment.id} accomplishment={accomplishment} title={accomplishment.task.title} />
           })}
           <div className="box__section"><a href={url} target="_blank">{url}</a></div>
+          {!player.accomplishments.length && (
+            <div className="button button--danger" onClick={() => onDelete(player)}>Poista pelaaja</div>
+          )}
         </div>
       )
     })

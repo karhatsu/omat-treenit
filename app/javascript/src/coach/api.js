@@ -16,6 +16,14 @@ export function fetchPlayers(coachKey, callback) {
   }).catch(() => handleApiConnectionError(callback))
 }
 
+export function deletePlayer(coachKey, playerId, callback) {
+  fetch(`/api/coach/${coachKey}/players/${playerId}`, {
+    method: 'DELETE',
+  }).then(response => {
+    handleApiResponse(response, callback)
+  }).catch(() => handleApiConnectionError(callback))
+}
+
 export function fetchTasks(coachKey, callback) {
   fetch(`/api/coach/${coachKey}/tasks`, {
     headers: { 'Content-Type': 'application/json' },
