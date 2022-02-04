@@ -1,14 +1,16 @@
 {
   "name": "omat_treenit",
   "private": true,
+  "scripts": {
+    "build": "node esbuild.js"
+  },
   "dependencies": {
-    "@babel/preset-react": "^7.16.0",
     "@rails/actioncable": "^6.1.4",
     "@rails/activestorage": "^6.1.4",
     "@rails/ujs": "^6.1.4",
-    "@rails/webpacker": "4.3.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "date-fns": "^2.25.0",
+    "esbuild": "^0.14.18",
+    "esbuild-sass-plugin": "^2.2.2",
     "marked": "^4.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -18,9 +20,7 @@
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
-  "devDependencies": {
-    "webpack-dev-server": "^3.11.2"
-  },
+  "devDependencies": {},
   "engines": {
     "node": "14.x"
   }

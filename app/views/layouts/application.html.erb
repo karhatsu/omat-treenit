@@ -8,8 +8,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
-    <%= javascript_pack_tag 'app' %>
-    <%= stylesheet_pack_tag 'app' %>
+    <%= javascript_include_tag "application", defer: true %>
+    <%= stylesheet_link_tag "application", defer: true %>
   </head>
 
   <body>

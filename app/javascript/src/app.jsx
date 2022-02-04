@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import HomePage from '../src/home_page'
-import PlayerPage from '../src/player/player_page'
-import CoachIndexPage from '../src/coach/coach_index_page'
-import PlayersPage from '../src/coach/players_page'
-import TasksPage from '../src/coach/tasks_page'
+import HomePage from './home_page'
+import PlayerPage from './player/player_page'
+import CoachIndexPage from './coach/coach_index_page'
+import PlayersPage from './coach/players_page'
+import TasksPage from './coach/tasks_page'
 
-import '../src/app.scss'
+import './app.scss'
 
 const Application = () => {
   return (
