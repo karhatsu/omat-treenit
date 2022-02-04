@@ -8,5 +8,4 @@ esbuild.build({
   sourcemap: true,
   outdir: 'app/assets/builds',
   plugins: [sassPlugin()],
-  watch: true,
 }).catch(() => process.exit(1))
